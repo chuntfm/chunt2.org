@@ -1,48 +1,13 @@
-# Kirby Headless Starter
+# chunt2.org
 
-> [!TIP]
-> Send a request with a `Authorization: Bearer test` header to the [live playground](https://kirby-headless-starter.jhnn.dev) for an example response.
+> [!WARNING]
+> This is not a functional backend yet!
 
-This starter kit provides a minimal setup for a headless Kirby site. It lets you fetch JSON-encoded data from your Kirby site using either KQL or Kirby's default template system.
-
-Routing and JSON-encoded responses are handled by the internal [`kirby-headless`](https://github.com/johannschopplich/kirby-headless) plugin, specifically its [global routes](https://github.com/johannschopplich/kirby-headless/blob/main/src/extensions/routes.php) and [API routes](https://github.com/johannschopplich/kirby-headless/blob/main/src/extensions/api.php) for KQL.
-
-This project works well with [`nuxt-kql`](https://nuxt-kql.byjohann.dev).
-
-## Example Projects
-
-- [`cacao-kit-frontend`](https://github.com/johannschopplich/cacao-kit-frontend): 🍫 Best practice Nuxt starter for Kirby with i18n & blocks
-- [`kirby-nuxt-starterkit`](https://github.com/johannschopplich/kirby-nuxt-starterkit): 💚 Kirby's sample site – ported to Nuxt 3 and KirbyQL
-
-## Key Features
-
-- 🦭 Optional bearer token for authentication
-- 🔒 Choose between **public** or **private** API
-- 🧩 Extends [KQL](https://github.com/getkirby/kql) with bearer token support (new `/api/kql` route)
-- 🧱 [Resolves UUIDs](https://github.com/johannschopplich/kirby-headless#field-methods) to actual file and page objects
-- ⚡️ Cached KQL queries
-- 🌐 Multi-language support for KQL queries
-- 🗂 [Kirby templates](https://github.com/johannschopplich/kirby-headless#templates) that output JSON instead of HTML
-- 😵‍💫 Seamless experience free from CORS issues
-- 🍢 Build your own [API chain](https://github.com/johannschopplich/kirby-headless/blob/main/src/extensions/routes.php)
-- 🦾 Express-esque [API builder](https://github.com/johannschopplich/kirby-headless#api-builder) with middleware support
-
-## Use Cases
-
-This starter kit is designed for developers who want to leverage Kirby's backend to serve content to a frontend application, static site generator, or mobile app. You can either opt-in to headless functionality for your existing Kirby site or use this plugin to build a headless-first CMS from scratch.
-
-Here are scenarios where the Kirby Headless Starter is particularly useful:
-
-- 1️⃣ If you prefer querying data with [Kirby Query Language](#kirbyql).
-- 2️⃣ When you wish to utilize [Kirby's default template system](#templates) to output JSON.
-
-Detailed instructions on how to use these features can be found in the [usage](#usage) section.
+This is the backend for chunt.org based on [Kirby 4](https://getkirby.com/) and `kirby-headless-starter`. For information on how to retrieve data via (one of) the API(s), please see the [kirby-headless-starter repository by johannschopplich](https://github.com/johannschopplich/kirby-headless-starter).
 
 ## Prerequisites
 
 - PHP 8.1+
-
-Kirby is not free software. However, you can try Kirby and the Starterkit on your local machine or on a test server as long as you need to make sure it is the right tool for your next project. … and when you’re convinced, [buy your license](https://getkirby.com/buy).
 
 ## Setup
 
@@ -85,9 +50,6 @@ You will then have to provide the HTTP header `Authentication: Bearer ${token}` 
 > [!NOTE]
 > The internal `/api/kql` route will always enforce bearer authentication, unless you explicitly disable it in your config (see below).
 
-### Templates
-
-> 📖 [See documentation in `kirby-headless` plugin](https://github.com/johannschopplich/kirby-headless#templates)
 
 ### Panel Settings
 
@@ -130,7 +92,3 @@ return [
 > See [ploi-deploy.sh](./scripts/ploi-deploy.sh) for exemplary deployment instructions.
 >
 > Some hosting environments require uncommenting `RewriteBase /` in [`.htaccess`](./public/.htaccess) to make site links work.
-
-## License
-
-[MIT](./LICENSE) License © 2022-PRESENT [Johann Schopplich](https://github.com/johannschopplich)
