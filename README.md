@@ -40,7 +40,7 @@ The `event` and `schedule` models provide additional methods and custom properti
 Plugins are a way to override or extend the default behavior of Kirby. The plugins are located in the `site/plugins` folder. Currently, the following custom ChuntFM plugins are in use:
 
 - `chuntfm/schedule-search` overrides the default search behavior of Kirby for SchedulePage event. Specifically, it excludes the event key from the searched subpages keys of the Schedule. The default Kirby search chokes on it because it's an array.
-- `chuntfm/series-events` provides the logistics to associate events with series and the other way around and display them in the Panel.
+- `chuntfm/series-events` provides the logistics to associate events with series and the other way around and display them in the Panel. For example, it makes sure only event creators can edit their events.
 
 ## Prerequisites
 
