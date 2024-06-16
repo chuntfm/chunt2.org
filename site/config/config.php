@@ -7,6 +7,8 @@ use Kirby\Content\Field;
 
 return [
 
+    'calScheduleUrl' => env('CFM_SCHEDULE_URL'), /* https://www.chunt.org/schedule.json */
+
     'debug' => env('KIRBY_DEBUG', false),
 
     'yaml' => [
@@ -58,7 +60,12 @@ return [
 
     // Default to token-based authentication
     'kql' => [
-        'auth' => 'bearer'
+        'auth' => 'bearer',
+        'methods' => [
+            'allowed' => [
+                'SchedulePage::grouped'
+            ]
+        ]
     ],
 
     // Kirby headless options

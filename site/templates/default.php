@@ -2,14 +2,19 @@
 
 /** @var \Kirby\Cms\Page $page */
 
-$data = [
-  '__meta' => [
-    'template' => $page->intendedTemplate()->name(),
-    'isHomePage' => $page->isHomePage(),
-    'isErrorPage' => $page->isErrorPage()
-  ],
-  'title' => $page->title()->value(),
-  'text' => $page->text()->kirbytext()->value(),
+
+
+$data = $page->toArray();
+
+$data['__meta__'] = [
+  'template' => $page->intendedTemplate()->name(),
+  'isHomePage' => $page->isHomePage(),
+  'isErrorPage' => $page->isErrorPage()
 ];
+
+$data['title'] = $page->title()->value();
+$data['uuid'] = $page->uuid()->id();
+
+
 
 echo \Kirby\Data\Json::encode($data);
