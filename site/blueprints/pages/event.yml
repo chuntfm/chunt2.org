@@ -1,0 +1,134 @@
+
+# Each page blueprint must have a title, the title may be different from the file name
+title: Event
+
+options:
+  changeTitle: true
+  changeStatus: false
+  changeSlug: true
+  delete: true
+  duplicate: false
+
+
+# We use tabs here to focus on the layout in one tab
+# and have the additional contact fields in a secondary
+# tab. Tabs can really help to clean up the interface
+# when it otherwise gets too complicated
+tabs:
+  metadata:
+    icon: info
+    label: Show information
+    columns:
+      - width: 1/2
+        # Kirby has many different field types, from simple text fields to the more complex structure field that contains subfields
+        # All available field types: https://getkirby.com/docs/reference/panel/fields
+        fields:
+          infostart:
+            label: Start
+            type: info
+            disabled: true
+            help: Please change the event times in the calendar event
+            text: |
+              {{ page.content.dateuk }} {{ page.content.starttimeuk }} (UK time)
+          infoend:
+            label: End
+            type: info
+            disabled: true
+            help: Please change the event times in the calendar event
+            text: |
+              {{ page.content.dateuk }} {{ page.content.endtimeuk }} (UK time)
+          infocreatormail:
+            label: Event creator email
+            type: info
+            text: |
+              {{ page.content.creatormail }}
+      - width: 1/2
+        fields:
+          description:
+            label: Show description
+            type: textarea
+          series:
+            label: Series
+            type: multiselect
+            options:
+              type: query
+              query: site.find('series').childrenAndDrafts
+              text: "{{ page.title }}"
+              value: "{{ page.uuid }}"
+          external:
+            label: Show airs on ChuntFM or other external station
+            type: radio
+            options:
+              "false": ChuntFM
+              "true": Other Station
+          external_url:
+            label: External Station URL
+            type: url
+            help: Please provide the URL of the external station
+            when:
+              external: "true"
+          external_station:
+            label: External Station Name
+            type: text
+            help: Please provide the name of the external station
+            when:
+              external: "true"
+
+  page:
+    icon: map
+    label: Show page
+    columns:
+      - width: 1/2
+        # Kirby has many different field types, from simple text fields to the more complex structure field that contains subfields
+        # All available field types: https://getkirby.com/docs/reference/panel/fields
+        fields:
+          subtitle:
+            label: Subtitle
+            type: writer
+            inline: true
+          host:
+            label: Host
+            type: writer
+      - width: 1/2
+        fields:
+          text:
+            label: Main show page content
+            type: blocks
+          tracklist:
+            label: Tracklist
+            help: One block per track
+            type: list
+
+  socialmedia:
+    icon: heart-filled
+    label: Social media post
+
+    columns:
+      - width: 3/4
+        fields:
+          image:
+            label: Image
+            type: files
+            multiple: false
+          post_text:
+            label: Post Text
+            type: textarea
+            minlength: 10
+            maxlength: 280
+      - width: 1/4
+        fields:
+          post_time:
+            label: Post Time (minutes before the event)
+            type: range
+            min: 3
+            max: 180
+            step: 1
+            default: 10
+
+          outlets:
+            label: Social Media Outlets
+            type: checkboxes
+            options:
+              twitter: Twitter
+              instagram: Instagram
+              linkedin: LinkedIn

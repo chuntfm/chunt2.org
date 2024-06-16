@@ -1,0 +1,20 @@
+# This section blueprint defines a pages section that can be reused across multiple blueprints
+# or multiple times within the same blueprint, see `/site/blueprints/pages/photography.yml`  and `/site/blueprints/site.yml`
+# Sections can have different layouts and display additional information or a preview image
+# More about pages sections: https://getkirby.com/docs/reference/panel/sections/pages
+label: Schedule
+help: |
+          Here you can see all of your submitted schedule events. You can edit them by clicking on the event title.
+
+          Hint: If you cannot see your event here, you probably used a different email address. Contact mail@chunt.org to get another email address added to your account.
+search: true
+parent: kirby.page("schedule")
+create: false
+type: pages
+size: small
+title: "{{ page.content.meta.title }}"
+info: "{{ page.content.dateuk }} - {{ page.content.starttimeuk }} - {{ page.content.endtimeuk }}"
+layout: list
+flip: true
+empty: No events yet
+

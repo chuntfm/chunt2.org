@@ -1,0 +1,38 @@
+# Each page blueprint must have a title, the title may be different from the file name
+title: Schedule
+
+# Each page can have an icon that is shown in page listings when no preview image is available.
+icon: 📆
+
+
+# Page options allow you to control how users can interact with the page.
+# Here we prevent changing the page slug and page deletion
+# More about page options: https://getkirby.com/docs/reference/panel/blueprints/page#options
+options:
+  changeSlug: false
+  delete: false
+  changeTitle: false
+  changeStatus: false
+  duplicate: false
+  create: false
+
+columns:
+
+  - width: 3/3
+    # In the second column, we reuse the same section, this time for listed pages and with a different headline
+    sections:
+      info:
+        type: info
+        headline: Schedule
+        text: >
+          Here you can see all of your submitted schedule events. You can edit them by clicking on the event title.
+
+          Hint: If you cannot see your event here, you probably used a different email address. Contact mail@chunt.org to get another email address added to your account.
+
+      listed:
+        extends: sections/schedule
+        label: Published events
+        size: small
+        layout: list
+
+# More about pages sections: https://getkirby.com/docs/reference/panel/sections/pages
